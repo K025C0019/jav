@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>分離版・カウンター</title>
-    <link rel="stylesheet" href="style.css">
+    <title>シンプル・カウンター</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f0f2f5; margin: 0; }
+        .container { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
+        h1 { color: #333; }
+        #count { font-size: 4rem; margin: 1rem 0; color: #007bff; }
+        button { font-size: 1rem; padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; background-color: #007bff; color: white; transition: 0.2s; }
+        button:hover { background-color: #0056b3; }
+        button:active { transform: scale(0.95); }
+    </style>
 </head>
 <body>
 
@@ -14,6 +22,25 @@
         <button id="btn">カウントアップ！</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // --- ここからJavaScript ---
+        let count = 0; // 数字を保存する変数
+        const countDisplay = document.getElementById('count'); // 表示部分を取得
+        const button = document.getElementById('btn'); // ボタンを取得
+
+        // ボタンがクリックされた時の処理
+        button.addEventListener('click', () => {
+            count++; // 1増やす
+            countDisplay.innerText = count; // 画面を更新
+            
+            // ちょっとした遊び心：10回ごとに色を変える
+            if (count % 10 === 0) {
+                countDisplay.style.color = '#ff4757';
+            } else {
+                countDisplay.style.color = '#007bff';
+            }
+        });
+    </script>
+
 </body>
 </html>
